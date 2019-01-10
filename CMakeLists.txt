@@ -1,14 +1,13 @@
-cmake_minimum_required(VERSION 3.13)
+cmake_minimum_required(VERSION 3.11)
 project(bwtool_langmead C)
 
 set(CMAKE_C_STANDARD 11)
 
 include_directories(.)
-add_compile_definitions(PACKAGE_STRING="bwtool-dev")
+add_definitions(-DPACKAGE_STRING="bwtool-dev")
+find_package(Threads)
 
 add_executable(bwtool_langmead
-        tests/bwmake.c
-        tests/wigmake.c
         aggregate.c
         bwtool.c
         bwtool.h
@@ -30,3 +29,5 @@ add_executable(bwtool_langmead
         split.c
         summarize.c
         window.c)
+
+target_link_libraries(bwtool_langmead beato jkweb m z hts ${CMAKE_THREAD_LIBS_INIT})
