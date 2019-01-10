@@ -18,3 +18,5 @@ Makefile
 bwtool
 .vscode
 autom4te.cache
+.idea
+cmake-build-*
